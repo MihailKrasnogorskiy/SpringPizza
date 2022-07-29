@@ -27,6 +27,6 @@ class HomeControllerTest {
         this.mockMvc.perform(get("/"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("home"))
-                .andExpect(content().string(containsString("Welcome to...")));
+                .andExpect(content().string(containsString("Рады видеть тебя в...")));
     }
 }

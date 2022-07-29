@@ -15,25 +15,25 @@ public class IngredientByIdConverter implements Converter<String, Ingredient> {
 
     public IngredientByIdConverter() {
         ingredientMap.put("ROME",
-                new Ingredient("ROME", "Rome Pizza", IngredientType.WRAP));
+                new Ingredient("ROME", "Римская пицца", IngredientType.WRAP));
         ingredientMap.put("CLSC",
-                new Ingredient("CLSC", "Classic Pizza", IngredientType.WRAP));
+                new Ingredient("CLSC", "Классическая пицца", IngredientType.WRAP));
         ingredientMap.put("SALM",
-                new Ingredient("SALM", "Salami", IngredientType.PROTEIN));
+                new Ingredient("SALM", "Салями", IngredientType.PROTEIN));
         ingredientMap.put("BACN",
-                new Ingredient("BACN", "Bacon", IngredientType.PROTEIN));
+                new Ingredient("BACN", "Бекон", IngredientType.PROTEIN));
         ingredientMap.put("TMTO",
-                new Ingredient("TMTO", "Rings Tomatoes", IngredientType.VEGGIES));
+                new Ingredient("TMTO", "Помидоры", IngredientType.VEGGIES));
         ingredientMap.put("SALD",
-                new Ingredient("SALD", "Salad", IngredientType.VEGGIES));
+                new Ingredient("SALD", "Салат", IngredientType.VEGGIES));
         ingredientMap.put("CHED",
-                new Ingredient("CHED", "Cheddar", IngredientType.CHEESE));
+                new Ingredient("CHED", "Чеддер", IngredientType.CHEESE));
         ingredientMap.put("LMBR",
-                new Ingredient("LMBR", "Lamber", IngredientType.CHEESE));
+                new Ingredient("LMBR", "Ламбер", IngredientType.CHEESE));
         ingredientMap.put("SLSA",
-                new Ingredient("SLSA", "Salsa", IngredientType.SAUCE));
+                new Ingredient("SLSA", "Сальса", IngredientType.SAUCE));
         ingredientMap.put("SRCR",
-                new Ingredient("SRCR", "Sour Cream", IngredientType.SAUCE));
+                new Ingredient("SRCR", "Кисло-сладкий соус", IngredientType.SAUCE));
     }
 
     @Override
