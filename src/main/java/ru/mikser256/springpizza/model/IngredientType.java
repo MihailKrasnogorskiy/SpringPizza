@@ -1,5 +1,7 @@
 package ru.mikser256.springpizza.model;
 
-public enum IngredientType {
-        WRAP, PROTEIN, VEGGIES, CHEESE, SAUCE
+import java.io.Serializable;
+
+public enum IngredientType implements Serializable {
+    WRAP, PROTEIN, VEGGIES, CHEESE, SAUCE
 }

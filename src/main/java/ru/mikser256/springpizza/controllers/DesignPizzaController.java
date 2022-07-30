@@ -1,17 +1,18 @@
 package ru.mikser256.springpizza.controllers;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+import ru.mikser256.springpizza.controllers.service.IngredientService;
 import ru.mikser256.springpizza.model.Ingredient;
 import ru.mikser256.springpizza.model.IngredientType;
 import ru.mikser256.springpizza.model.Pizza;
 import ru.mikser256.springpizza.model.PizzaOrder;
 
 import javax.validation.Valid;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -20,24 +21,18 @@ import java.util.stream.Collectors;
 @RequestMapping("/design")
 @SessionAttributes("pizzaOrder")
 public class DesignPizzaController {
+    private final IngredientService service;
+
+    @Autowired
+    public DesignPizzaController(IngredientService service) {
+        this.service = service;
+    }
+
     @ModelAttribute
     public void addIngredientsToModel(Model model) {
-        List<Ingredient> ingredients = Arrays.asList(
-                new Ingredient("ROME", "Римская пицца", IngredientType.WRAP),
-                new Ingredient("CLSC", "Классическая пицца", IngredientType.WRAP),
-                new Ingredient("SALM", "Салями", IngredientType.PROTEIN),
-                new Ingredient("BACN", "Бекон", IngredientType.PROTEIN),
-                new Ingredient("TMTO", "Помидоры", IngredientType.VEGGIES),
-                new Ingredient("SALD", "Салат", IngredientType.VEGGIES),
-                new Ingredient("CHED", "Чеддер", IngredientType.CHEESE),
-                new Ingredient("LMBR", "Ламбер", IngredientType.CHEESE),
-                new Ingredient("SLSA", "Сальса", IngredientType.SAUCE),
-                new Ingredient("SRCR", "Кисло-сладкий соус", IngredientType.SAUCE)
-        );
-        IngredientType[] types = IngredientType.values();
-        for (IngredientType type : types) {
-            model.addAttribute(type.toString().toLowerCase(),
-                    filterByType(ingredients, type));
+        List<Ingredient> ingredients = service.findAll();
+        for (IngredientType type : IngredientType.values()) {
+            model.addAttribute(type.toString().toLowerCase(), filterByType(ingredients, type));
         }
     }
 
@@ -66,8 +61,7 @@ public class DesignPizzaController {
         return "redirect:/orders/current";
     }
 
-    private Iterable<Ingredient> filterByType(
-            List<Ingredient> ingredients, IngredientType type) {
+    private Iterable<Ingredient> filterByType(List<Ingredient> ingredients, IngredientType type) {
         return ingredients
                 .stream()
                 .filter(x -> x.getType().equals(type))

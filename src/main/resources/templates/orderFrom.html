@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Taco Cloud</title>
+    <title>SpringPizza</title>
     <link rel="stylesheet" th:href="@{/styles.css}" />
 </head>
 
@@ -57,12 +57,12 @@
     <!-- tag::allButValidation[] -->
     <br/>
 
-    <label for="deliveryState">Дом: </label>
-    <input type="text" th:field="*{deliveryState}"/>
+    <label for="deliveryNumberOfHouse">Дом: </label>
+    <input type="text" th:field="*{deliveryNumberOfHouse}"/>
     <!-- end::allButValidation[] -->
     <span class="validationError"
-          th:if="${#fields.hasErrors('deliveryState')}"
-          th:errors="*{deliveryState}">State Error</span>
+          th:if="${#fields.hasErrors('deliveryNumberOfHouse')}"
+          th:errors="*{deliveryNumberOfHouse}">NumberOfHouse Error</span>
     <!-- tag::allButValidation[] -->
     <br/>
 
