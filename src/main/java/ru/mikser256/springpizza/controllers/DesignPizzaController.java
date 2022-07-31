@@ -13,6 +13,7 @@ import ru.mikser256.springpizza.model.Pizza;
 import ru.mikser256.springpizza.model.PizzaOrder;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -30,7 +31,8 @@ public class DesignPizzaController {
 
     @ModelAttribute
     public void addIngredientsToModel(Model model) {
-        List<Ingredient> ingredients = service.findAll();
+        List<Ingredient> ingredients = new ArrayList<>(service.findAll());
+
         for (IngredientType type : IngredientType.values()) {
             model.addAttribute(type.toString().toLowerCase(), filterByType(ingredients, type));
         }

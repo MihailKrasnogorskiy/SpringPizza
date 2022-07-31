@@ -3,6 +3,8 @@ package ru.mikser256.springpizza.model;
 import lombok.Data;
 import org.hibernate.validator.constraints.CreditCardNumber;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.Table;
 
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
@@ -12,15 +14,18 @@ import java.util.Date;
 import java.util.List;
 
 @Data
+@Table
 public class PizzaOrder {
+    @Id
     private Long id;
-    private Date placedAt;
+    private Date placedAt = new Date();
     @NotBlank(message = "Введите имя")
     private String deliveryName;
     @NotBlank(message = "Введите название города")
     private String deliveryCity;
     @NotBlank(message = "Введите название улицы")
     private String deliveryStreet;
+    @Column("DELIVERY_HOUSE")
     @NotBlank(message = "Введите номер дома")
     private String deliveryNumberOfHouse;
     @NotBlank(message = "Введите номер квартиры")
